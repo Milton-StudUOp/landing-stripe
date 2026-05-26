@@ -1,26 +1,69 @@
-/* ========== DESIGN SYSTEM & VARIABLES ========== */
-:root {
-  --bg: #ffffff;
-  --navy: #061b31;
-  --purple: #533afd;
-  --slate: #64748d;
-  --border: #e5edf5;
-  --dark-bg: #1c1e54;
-  --success: #15be53;
-  --ruby: #ea2261;
-  
-  /* Border Radii */
-  --radius-btn: 4px;
-  --radius-card: 6px;
+/* ========================================
+   PAYFLOW — Premium Design System
+   Typography: Inter + JetBrains Mono
+   ======================================== */
 
-  /* Premium Shadows */
-  --shadow-premium: rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px;
-  --shadow-purple: rgba(83, 58, 253, 0.25) 0px 30px 45px -30px, rgba(83, 58, 253, 0.1) 0px 18px 36px -18px;
-  --shadow-light: rgba(50, 50, 93, 0.08) 0px 15px 35px -15px, rgba(0, 0, 0, 0.04) 0px 8px 16px -8px;
+:root {
+  /* Core Brand */
+  --purple: #533afd;
+  --purple-dark: #3f28e0;
+  --purple-mid: #6b4fff;
+  --purple-light: #8b6fff;
+  --purple-glow: rgba(83, 58, 253, 0.18);
+  --purple-subtle: rgba(83, 58, 253, 0.07);
+  --purple-border: rgba(83, 58, 253, 0.18);
+
+  /* Neutrals */
+  --navy: #060b22;
+  --navy-mid: #0d1640;
+  --slate-800: #1e293b;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --white: #ffffff;
+
+  /* Semantic */
+  --success: #10d070;
+  --success-bg: rgba(16, 208, 112, 0.08);
+  --warning: #f59e0b;
+  --error: #ef4444;
 
   /* Typography */
-  --sans: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, monospace;
+
+  /* Spacing */
+  --nav-h: 68px;
+  --container-max: 1200px;
+
+  /* Border Radii */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-purple: 0 8px 30px rgba(83, 58, 253, 0.30), 0 2px 8px rgba(83, 58, 253, 0.15);
+  --shadow-purple-lg: 0 20px 60px rgba(83, 58, 253, 0.25), 0 4px 20px rgba(83, 58, 253, 0.15);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 180ms;
+  --duration-base: 280ms;
+  --duration-slow: 500ms;
 }
 
 /* ========== RESET ========== */
@@ -34,15 +77,16 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--slate);
+  font-family: var(--font-sans);
+  background: var(--white);
+  color: var(--slate-600);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
+  line-height: 1.6;
   overflow-x: hidden;
   width: 100%;
 }
@@ -55,7 +99,34 @@ body {
   overflow-x: hidden;
 }
 
-/* Base interactive transitions */
-a, button {
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+a {
+  color: inherit;
+  text-decoration: none;
 }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul { list-style: none; }
+
+/* ========== SELECTION ========== */
+::selection {
+  background: rgba(83, 58, 253, 0.15);
+  color: var(--purple-dark);
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--slate-200); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--slate-400); }
